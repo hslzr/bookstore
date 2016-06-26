@@ -1,4 +1,7 @@
 <div class="page-header">
   <h1>Editar Usuario</h1>
 </div>
-<%= render 'form' %>
+
+<%= form_for @user, url: admin_user_path(@user), :html => { method: :put, :class => "form-horizontal user" } do |f| %>
+  <%= render 'form' %>
+<% end %>
