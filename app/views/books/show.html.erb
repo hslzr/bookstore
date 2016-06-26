@@ -1,24 +1,21 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @book.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @book.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong>Descripción:</strong></dt>
+  <dd><%= @book.description %></dd>
+  <dt><strong>Código:</strong></dt>
+  <dd><%= @book.slug %></dd>
+</dl>
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
+<% if user_signed_in? %>
+  <%= link_to "Atrás",
+    books_path, :class => 'btn btn-default'  %>
+  <%= link_to "Editar",
+    edit_book_path(@book), :class => 'btn btn-default' %>
+  <%= link_to "Eliminar",
+    book_path(@book),
+    :method => 'delete',
+    :data => "¿Estás seguro?",
+    :class => 'btn btn-danger' %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @book.description %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @book.slug %>
-</p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<% end %>
