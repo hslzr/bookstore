@@ -3,6 +3,7 @@ class Book < ActiveRecord::Base
   validates :slug, uniqueness: true
 
   has_many :comments
+  has_many :pictures, as: :picturable
 
   before_save :upcase_slug
   before_destroy :verify_if_theres_comments

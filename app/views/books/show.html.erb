@@ -1,4 +1,4 @@
-<h1><%= @book.name %></h1>
+<h1><%= t(:book_name, name: @book.name) %></h1>
 
 <dl class="dl-horizontal">
   <dt><strong>Descripción:</strong></dt>
@@ -36,8 +36,26 @@
 <% end %>
 
 <div id="comments_section">
-
   <% @comments.each do |comment| %>
     <%= render 'shared/comment_info', comment: comment %>
   <% end %>
 </div>
+
+<h3>Imágenes</h3>
+
+<%= form_for Picture.new, url: pictures_path do |f| %>
+  <%= f.hidden_field :picturable_id,  value: @book.id %>
+  <%= f.hidden_field :picturable_type, value: "Book" %>
+  <%= f.file_field :image %>
+  <br/>
+  <%= f.submit "Agregar", class: "btn btn-primary" %>
+<% end %>
+
+<div>
+  <% @pictures.each do |picture| %>
+    <%= image_tag picture.image.thumb.url %>
+    <%= link_to "Eliminar", picture_path(picture), method: :delete, data: { confirm: "¿Estás seguro?"} %>
+  <% end %>
+
+</div>
+

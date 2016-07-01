@@ -5,16 +5,14 @@ class Ability
     user ||=  User.new(role: "guest")
 
     if user.admin?
-        can :manage, Comment
-				can :manage, User
-				can :manage, Book
+      can :manage, Comment
+      can :manage, User
+      can :manage, Book
     elsif user.user?
-        can :manage, Comment, user_id: user.id
-				can :read, Book
-				can :read, User
-    else
-        can :read, Comment
+      can :manage, Comment, user_id: user.id
     end
+    can :read, Comment
+    can :read, Book
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

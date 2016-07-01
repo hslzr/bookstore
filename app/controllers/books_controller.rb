@@ -14,6 +14,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @comments = @book.comments.order("created_at desc")
+    @pictures = @book.pictures.order("created_at desc")
   end
 
   # GET /books/new
