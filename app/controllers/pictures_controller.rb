@@ -58,6 +58,7 @@ class PicturesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to book_path(@picture.picturable), notice: 'Picture was successfully destroyed.' }
       format.json { head :no_content }
+      format.js {}
     end
   end
 

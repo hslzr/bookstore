@@ -51,11 +51,10 @@
   <%= f.submit "Agregar", class: "btn btn-primary" %>
 <% end %>
 
-<div>
-  <% @pictures.each do |picture| %>
+<% @pictures.each do |picture| %>
+  <div id= "picture_<%= picture.id %>">
     <%= image_tag picture.image.thumb.url %>
-    <%= link_to "Eliminar", picture_path(picture), method: :delete, data: { confirm: "¿Estás seguro?"} %>
-  <% end %>
-
-</div>
+    <%= link_to "Eliminar", picture_path(picture), method: :delete, data: { confirm: "¿Estás seguro?"}, remote: true %>
+  </div>
+<% end %>
 

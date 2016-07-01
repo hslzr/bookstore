@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :pictures, as: :picturable
-
-  has_many :pictures, as: :picturable
   def admin?
     role == "admin"
   end    
