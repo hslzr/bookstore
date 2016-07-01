@@ -28,7 +28,13 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to book_path(@picture.picturable), notice: 'Picture was successfully created.' }
+        format.html do 
+          if @picture.picturable_type == "Book"
+            redirect_to book_path(@picture.picturable), notice: 'Picture was successfully created.'
+          elsif @picture.picturable_type == "User"
+            redirect_to admin_user_path(@picture.picturable), notice: "Picture was successfully created."
+          end
+        end
         format.json { render :show, status: :created, location: @picture }
       else
         format.html { render :new }

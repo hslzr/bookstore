@@ -1,0 +1,17 @@
+<h3>Imágenes</h3>
+
+<%= form_for Picture.new, url: pictures_path do |f| %>
+  <%= f.hidden_field :picturable_id,  value: picturable_id %>
+  <%= f.hidden_field :picturable_type, value: picturable_type %>
+  <%= f.file_field :image %>
+  <br/>
+  <%= f.submit "Agregar", class: "btn btn-primary" %>
+<% end %>
+
+<% pictures.each do |picture| %>
+  <div id= "picture_<%= picture.id %>">
+    <%= image_tag picture.image.thumb.url %>
+    <%= link_to "Eliminar", picture_path(picture), method: :delete, data: { confirm: "¿Estás seguro?"}, remote: true %>
+  </div>
+<% end %>
+
