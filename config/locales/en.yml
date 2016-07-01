@@ -20,4 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  author: "Author"
+
+  books: "Books"
+  book_name: "Book: %{name}"
+
+  code: "Code"
+
+  name: "Name"
+
+  sign_in: "Sign in"
+  sign_up: "Sign up" 
+
+  users: "Users"
+
+  time: 
+    formats:
+      detailed: "%d/%b/%Y %H:%M"
